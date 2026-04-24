@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ценности СВАРОГ</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1e232c;
+      --text: #f2f4f7;
+      --muted: #b7bec9;
+      --line: rgba(255,255,255,.10);
+      --accent: #ff7a00;
+      --accent-2: #ff9f43;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(0,0,0,.28);
+      --radius: 22px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255,122,0,.18), transparent 25%),
+        linear-gradient(180deg, #0d1014 0%, #11151b 40%, #0d1014 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .svarog-values-page { overflow: hidden; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    h1, h2, h3, h4, p { margin: 0; }
+
+    .hero {
+      padding: 54px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -80px;
+      top: -90px;
+      background: radial-gradient(circle, rgba(255,122,0,.35), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: rgba(255,122,0,.10);
+      border: 1px solid rgba(255,122,0,.22);
+      border-radius: 999px;
+      color: #ffd0ab;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      max-width: 860px;
+    }
+
+    .hero-subtitle {
+      margin-top: 18px;
+      max-width: 760px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .hero-text {
+      margin-top: 18px;
+      max-width: 760px;
+      color: #e2e6eb;
+      font-size: 16px;
+    }
+
+    .hero-badges {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-badge {
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      font-size: 14px;
+      color: #e7ebf0;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-stat,
+    .hero-note {
+      padding: 28px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 38px;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .hero-stat span,
+    .hero-note p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-note {
+      background:
+        linear-gradient(180deg, rgba(255,122,0,.12), rgba(255,122,0,.04)),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+    }
+
+    section { padding: 28px 0; }
+
+    .section-head {
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+
+    .section-head p {
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .value-card {
+      padding: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .value-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(255,122,0,.12);
+      border: 1px solid rgba(255,122,0,.24);
+      color: var(--accent-2);
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .value-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      padding-left: 18px;
+      position: relative;
+      color: #e2e6eb;
+      font-size: 15px;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255,122,0,.7);
+    }
+
+    .proof-grid,
+    .columns-2,
+    .partner-grid,
+    .facts-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .proof-grid,
+    .columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .partner-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .facts-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .proof-card,
+    .columns-card,
+    .partner-card,
+    .cta-card,
+    .fact-card {
+      padding: 30px;
+    }
+
+    .proof-card h3,
+    .columns-card h3,
+    .partner-card h3,
+    .cta-card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .proof-card p,
+    .columns-card p,
+    .partner-card p,
+    .cta-card p,
+    .fact-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini-box,
+    .partner-item,
+    .fact-card,
+    .timeline-step,
+    .quote-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+    }
+
+    .mini-box strong,
+    .partner-item strong,
+    .fact-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .mini-box span,
+    .partner-item span,
+    .fact-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .timeline-step .num {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #111;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .dark-band {
+      margin-top: 18px;
+      padding: 26px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,122,0,.10), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .quote-box {
+      margin-top: 18px;
+      font-size: 16px;
+      color: #e2e6eb;
+    }
+
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(255,122,0,.18), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+    }
+
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .cta-link.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #111;
+      box-shadow: 0 12px 28px rgba(255,122,0,.22);
+    }
+
+    .cta-link.secondary {
+      border-color: rgba(255,255,255,.12);
+      color: var(--white);
+      background: rgba(255,255,255,.03);
+    }
+
+    .cta-link:hover { transform: translateY(-1px); }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .value-grid,
+      .proof-grid,
+      .columns-2,
+      .partner-grid,
+      .facts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      .hero, section { padding: 22px 0; }
+      .hero-card, .hero-stat, .hero-note, .value-card, .proof-card, .columns-card, .partner-card, .cta-card, .fact-card { padding: 22px; }
+      .value-grid,
+      .proof-grid,
+      .columns-2,
+      .partner-grid,
+      .facts-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-step { grid-template-columns: 56px 1fr; }
+      .timeline-step .num { width: 56px; height: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="svarog-values-page">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">Ценности бренда СВАРОГ</div>
+          <h1>Принципы, которые проявляются в оборудовании, сервисе и партнёрской работе</h1>
+          <p class="hero-subtitle">
+            Сегодня СВАРОГ — это бренд, который развивается вместе с рынком и опирается не на абстрактные обещания, а на понятные принципы работы. Для нас ценности важны не как формальный раздел о компании, а как основа решений, которые ежедневно влияют на качество продукта, уровень сервиса и доверие клиентов.
+          </p>
+          <p class="hero-text">
+            Мы убеждены, что сильный бренд в профессиональном сегменте должен подтверждать свои слова практикой: стабильной работой оборудования, вниманием к задачам сварщика, поддержкой дилеров и готовностью двигаться вперёд в условиях меняющегося рынка. Именно поэтому в основе СВАРОГ лежат три ключевые ценности: надёжность, профессионализм и смелость.
+          </p>
+          <div class="hero-badges">
+            <div class="hero-badge">Оборудование для реальных задач</div>
+            <div class="hero-badge">Поддержка клиентов и партнёров</div>
+            <div class="hero-badge">Системный подход к развитию бренда</div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="panel hero-stat">
+            <strong>Надёжность</strong>
+            <span>Уверенность в оборудовании, качестве поставок, сервисной поддержке и стабильном результате в работе.</span>
+          </div>
+          <div class="panel hero-stat">
+            <strong>Профессионализм</strong>
+            <span>Комплексный подход к продукту, сопровождению клиента и развитию решений под практические задачи.</span>
+          </div>
+          <div class="panel hero-note">
+            <h3 style="font-size:22px;margin-bottom:10px;">Смелость</h3>
+            <p>
+              Готовность менять рынок шаг за шагом, предлагать новые решения и двигаться вперёд вместе с клиентами и партнёрами.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Три ценности. Одна система работы</h2>
+          </div>
+          <p>
+            На текущей странице бренда уже обозначены три базовые ценности — надёжность, профессионализм и смелость. В новой версии они раскрываются более полно: не как декларации, а как конкретные ориентиры, которые считываются в продукте, коммуникации и партнёрской модели компании.
+          </p>
+        </div>
+
+        <div class="value-grid">
+          <article class="value-card">
+            <div class="value-icon">✓</div>
+            <h3>Надёжность</h3>
+            <p>
+              Без этой ценности невозможно представить бренд профессионального сварочного оборудования. Надёжность для СВАРОГ — это не только стабильная работа аппарата, но и уверенность клиента в том, что за продуктом стоит системный подход, внимание к качеству и ответственность за результат.
+            </p>
+            <p>
+              Мы понимаем надёжность шире, чем просто техническую характеристику. Это уверенность в каждой поставке, в предсказуемом уровне сервиса, в понятной гарантийной поддержке и в том, что оборудование будет соответствовать ожиданиям пользователя вне зависимости от линейки и партии.
+            </p>
+            <ul class="bullet-list">
+              <li>Стабильность качества и внимания к продукту на каждом этапе</li>
+              <li>Ответственность перед клиентом после покупки, а не только в момент продажи</li>
+              <li>Ориентир на долгосрочную эксплуатацию оборудования</li>
+            </ul>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">⚙</div>
+            <h3>Профессионализм</h3>
+            <p>
+              Для нас профессионализм реализуется в комплексе решений: от подхода к разработке и производству оборудования до построения сети дистрибуции, сервисной поддержки и глубокого понимания потребностей конечного клиента. Мы смотрим на продукт не отдельно, а как на часть целой системы работы.
+            </p>
+            <p>
+              Такой подход помогает создавать решения, которые востребованы в реальной практике. Для СВАРОГ важно не просто предложить оборудование, а помочь подобрать его под задачу, обеспечить сопровождение и говорить с рынком на языке профессионалов.
+            </p>
+            <ul class="bullet-list">
+              <li>Комплексный взгляд на продукт, сервис и пользовательский опыт</li>
+              <li>Понимание задач дилеров, предприятий и конечных пользователей</li>
+              <li>Стремление быть полезными на всех этапах взаимодействия</li>
+            </ul>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">↗</div>
+            <h3>Смелость</h3>
+            <p>
+              Бренд СВАРОГ — это пример того, как можно менять рынок постепенно, но последовательно. Смелость для нас — это готовность брать на себя ответственность за развитие, выходить за рамки привычных решений и не останавливаться в момент, когда изменения требуют настойчивости и внутренней уверенности.
+            </p>
+            <p>
+              Мы верим, что движение вперёд начинается с готовности ставить перед собой амбициозные цели. Именно поэтому смелость в философии СВАРОГ — это не резкий жест, а стратегия постоянного роста, в которой бренд, клиенты и партнёры вместе стремятся к большему.
+            </p>
+            <ul class="bullet-list">
+              <li>Открытость к развитию новых направлений и решений</li>
+              <li>Готовность усиливать стандарты рынка через реальные действия</li>
+              <li>Стремление идти вперёд вместе с клиентами и партнёрами</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Как эти ценности проявляются на практике</h2>
+          </div>
+          <p>
+            Сильная страница о ценностях должна показывать не только мировоззрение бренда, но и его повседневную практику. Именно в конкретных точках контакта — в выборе оборудования, в сервисе, в сопровождении клиентов и в партнёрской работе — ценности становятся понятными и убедительными.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <div class="panel proof-card">
+            <h3>В оборудовании</h3>
+            <p>
+              Надёжность, профессионализм и смелость отражаются в том, как формируется продуктовый портфель СВАРОГ. Бренд развивает оборудование для разных задач и сегментов, уделяя внимание не только техническим характеристикам, но и удобству эксплуатации, понятности выбора и практической пользе для пользователя.
+            </p>
+            <p>
+              Для клиента это означает возможность выбирать решения, которые соответствуют условиям работы, уровню нагрузки и ожиданиям от результата. Для бренда — необходимость постоянно поддерживать баланс между качеством, функциональностью и актуальностью продуктовых решений.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong>Понятная логика выбора</strong>
+                <span>Оборудование должно отвечать задаче клиента, а не перегружать его лишними сложностями.</span>
+              </div>
+              <div class="mini-box">
+                <strong>Ориентация на практику</strong>
+                <span>В центре внимания — реальные сценарии работы, а не только формальные характеристики.</span>
+              </div>
+              <div class="mini-box">
+                <strong>Уверенность в результате</strong>
+                <span>Продукт должен поддерживать качество работы и ощущение надёжности в эксплуатации.</span>
+              </div>
+              <div class="mini-box">
+                <strong>Постоянное развитие</strong>
+                <span>Бренд должен быть готов совершенствовать решения вместе с рынком и задачами клиентов.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel proof-card">
+            <h3>В сервисе и сопровождении</h3>
+            <p>
+              Для СВАРОГ важен не только момент покупки, но и весь путь клиента после неё. Поддержка, сервис, консультации, обучение и доступ к информации формируют общее ощущение от бренда не меньше, чем само оборудование. Поэтому ценности компании должны считываться и в уровне сопровождения.
+            </p>
+            <p>
+              Такой подход помогает выстраивать долгосрочные отношения и усиливает доверие. Когда клиент видит, что бренд не исчезает после продажи, а остаётся рядом в рабочем процессе, ценности становятся для него реальным опытом, а не просто текстом на странице.
+            </p>
+            <div class="timeline">
+              <div class="timeline-step">
+                <div class="num">01</div>
+                <div>
+                  <strong>Подбор под задачу</strong>
+                  <p>Внимание к потребности клиента ещё до покупки и стремление предложить решение, которое действительно подходит по условиям эксплуатации.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="num">02</div>
+                <div>
+                  <strong>Поддержка в работе</strong>
+                  <p>Гарантийное сопровождение, сервисная инфраструктура и понятная помощь в процессе использования оборудования.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="num">03</div>
+                <div>
+                  <strong>Развитие компетенций</strong>
+                  <p>Демонстрации, обучение, консультации и стремление быть для клиента не только поставщиком, но и надёжным профессиональным партнёром.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dark-band">
+          <strong style="display:block;font-size:20px;margin-bottom:8px;">Почему такой формат работает лучше</strong>
+          <span style="color:var(--muted);">
+            Когда ценность раскрывается через схему «что она означает — где проявляется — что получает клиент», страница становится сильнее как с точки зрения бренда, так и с точки зрения доверия. Такой подход делает раздел полезным не только для имиджа, но и для продаж, переговоров и B2B-коммуникации.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container columns-2">
+        <div class="panel columns-card">
+          <h3>Ценности в отношениях с партнёрами</h3>
+          <p>
+            Для компании с дилерской моделью ценности особенно важны в партнёрской работе. Они формируют ожидания от взаимодействия, задают уровень доверия и показывают, насколько бренд последователен в своей рыночной позиции. Партнёру важно понимать, что за продуктом стоит не только узнаваемое имя, но и стабильный подход к сотрудничеству.
+          </p>
+          <p>
+            В этом контексте надёжность означает предсказуемость и ответственность, профессионализм — глубокое понимание рынка и потребностей партнёров, а смелость — готовность развивать совместные инициативы, усиливать представленность бренда и двигаться вперёд вместе.
+          </p>
+          <ul class="bullet-list">
+            <li>Системная поддержка и понятная логика взаимодействия</li>
+            <li>Единый подход к качеству представления бренда</li>
+            <li>Ориентир на долгосрочные и взаимовыгодные отношения</li>
+          </ul>
+        </div>
+
+        <div class="panel columns-card">
+          <h3>Ценности в восприятии бренда</h3>
+          <p>
+            Страница о ценностях — это важный элемент общего образа компании. Она помогает показать, каким принципам следует бренд, почему ему можно доверять и чем он отличается не только по продукту, но и по подходу к работе. Для клиента это дополнительное подтверждение серьёзности и зрелости компании.
+          </p>
+          <p>
+            Для внутренней команды такой раздел также полезен: он формирует единый язык коммуникации, помогает выстраивать более цельные сообщения в маркетинге и делает позиционирование бренда более понятным как для рынка, так и для партнёров.
+          </p>
+          <ul class="bullet-list">
+            <li>Усиливает доверие со стороны клиентов и B2B-аудитории</li>
+            <li>Поддерживает переговоры и репутационные коммуникации</li>
+            <li>Помогает выстроить более целостное позиционирование бренда</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Что важно сохранить в новой версии страницы</h2>
+          </div>
+          <p>
+            На действующей странице уже заложена правильная смысловая основа. В текущем разделе компания прямо называет ключевыми ценностями надёжность, профессионализм и смелость, связывая их с качеством оборудования, комплексным подходом к работе и готовностью менять рынок. Новая версия может усилить эти же идеи за счёт более современной структуры, расширенного текста и более убедительной визуальной подачи. citeturn136528view0
+          </p>
+        </div>
+
+        <div class="facts-grid">
+          <div class="panel fact-card">
+            <strong>Сохранить смысловую преемственность</strong>
+            <p>Новая страница должна опираться на уже существующую философию бренда, а не заменять её полностью. citeturn136528view0</p>
+          </div>
+          <div class="panel fact-card">
+            <strong>Усилить доказательность</strong>
+            <p>Текущие формулировки можно сделать сильнее, если связать их с оборудованием, сервисом и партнёрской работой. citeturn136528view0</p>
+          </div>
+          <div class="panel fact-card">
+            <strong>Добавить прикладную пользу</strong>
+            <p>Раздел должен работать не только на имидж, но и на доверие со стороны клиентов, дилеров и бизнеса. citeturn136528view0</p>
+          </div>
+          <div class="panel fact-card">
+            <strong>Сделать страницу живее визуально</strong>
+            <p>Индустриальный визуал, реальные сценарии и более насыщенная композиция помогут лучше раскрыть характер бренда.</p>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          В такой подаче страница ценностей становится не просто разделом о компании, а полноценным репутационным инструментом: она помогает показать зрелость бренда, его внутреннюю опору и готовность быть рядом с клиентом и партнёром в реальной работе.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="panel partner-card">
+          <h3>Принципы, которые считываются в партнёрской модели</h3>
+          <p>
+            Для дилеров и профессиональных клиентов особенно важна практическая сторона ценностей. Им важно видеть, что бренд умеет выстраивать понятные процессы, поддерживать партнёров, развивать совместные проекты и сохранять единый уровень качества в представлении продукции и коммуникации с рынком.
+          </p>
+          <div class="partner-grid">
+            <div class="partner-item">
+              <strong>Стабильность</strong>
+              <span>Партнёр понимает, чего ожидать от бренда, и может строить работу на предсказуемой основе.</span>
+            </div>
+            <div class="partner-item">
+              <strong>Поддержка</strong>
+              <span>Бренд помогает материалами, коммуникацией и более сильным позиционированием на местах.</span>
+            </div>
+            <div class="partner-item">
+              <strong>Экспертность</strong>
+              <span>Профессиональный подход усиливает доверие и делает сотрудничество более содержательным.</span>
+            </div>
+            <div class="partner-item">
+              <strong>Развитие</strong>
+              <span>Смелость в партнёрской работе означает готовность запускать новые форматы и усиливать рынок вместе.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="panel cta-card">
+          <h3>СВАРОГ — ценности, которые работают в деле</h3>
+          <p>
+            Этот HTML-блок подготовлен как самостоятельное содержимое страницы без меню и футера, чтобы его можно было встроить на сайт и протестировать в реальном окружении. При необходимости сюда можно добавить фирменные изображения, ссылки на каталог, сервис, раздел для партнёров и любые дополнительные блоки, которые нужны для финальной версии.
+          </p>
+          <div class="cta-links">
+            <a href="#" class="cta-link primary">Ссылка на каталог</a>
+            <a href="#" class="cta-link secondary">Ссылка для партнёров</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
