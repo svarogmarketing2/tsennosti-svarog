@@ -1,0 +1,685 @@
+<!-- Финальная HTML-версия страницы «Ценности бренда СВАРОГ» для вставки на сайт. Без меню и футера. -->
+<style>
+  .sv-values-page {
+    --sv-orange: #f37021;
+    --sv-orange-dark: #c94f0f;
+    --sv-dark: #151515;
+    --sv-dark-2: #202020;
+    --sv-dark-3: #2a2a2a;
+    --sv-text: #2b2b2b;
+    --sv-muted: #666;
+    --sv-light: #f6f6f6;
+    --sv-border: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--sv-text);
+    line-height: 1.55;
+    background: #fff;
+  }
+
+  .sv-values-page * { box-sizing: border-box; }
+
+  .sv-values-page a { color: inherit; text-decoration: none; }
+
+  .sv-values-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .sv-values-hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(243,112,33,.28), transparent 28%),
+      linear-gradient(135deg, #111 0%, #222 55%, #141414 100%);
+    color: #fff;
+    border-radius: 0 0 28px 28px;
+    margin-bottom: 54px;
+  }
+
+  .sv-values-hero:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: .45;
+  }
+
+  .sv-values-hero-inner {
+    position: relative;
+    padding: 76px 0 72px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, .8fr);
+    gap: 42px;
+    align-items: center;
+  }
+
+  .sv-values-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid rgba(243,112,33,.6);
+    border-radius: 999px;
+    color: #ffb383;
+    background: rgba(243,112,33,.08);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .sv-values-label:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sv-orange);
+    box-shadow: 0 0 18px rgba(243,112,33,.9);
+  }
+
+  .sv-values-hero h1 {
+    margin: 0 0 22px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -.03em;
+  }
+
+  .sv-values-hero h1 span { color: var(--sv-orange); }
+
+  .sv-values-hero-text {
+    margin: 0;
+    max-width: 760px;
+    color: rgba(255,255,255,.84);
+    font-size: 19px;
+  }
+
+  .sv-values-hero-card {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 24px;
+    padding: 28px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 24px 60px rgba(0,0,0,.22);
+  }
+
+  .sv-values-hero-card strong {
+    display: block;
+    font-size: 54px;
+    line-height: 1;
+    color: var(--sv-orange);
+    margin-bottom: 8px;
+  }
+
+  .sv-values-hero-card p {
+    margin: 0;
+    color: rgba(255,255,255,.82);
+    font-size: 16px;
+  }
+
+  .sv-values-section { margin: 0 0 64px; }
+
+  .sv-values-section-head {
+    max-width: 840px;
+    margin-bottom: 28px;
+  }
+
+  .sv-values-eyebrow {
+    display: block;
+    color: var(--sv-orange);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .sv-values-section h2 {
+    margin: 0 0 14px;
+    color: var(--sv-dark);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+
+  .sv-values-section-head p {
+    margin: 0;
+    color: var(--sv-muted);
+    font-size: 18px;
+  }
+
+  .sv-values-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .sv-values-intro-text,
+  .sv-values-quote {
+    border-radius: 24px;
+    padding: 30px;
+    background: var(--sv-light);
+    border: 1px solid var(--sv-border);
+  }
+
+  .sv-values-intro-text p {
+    margin: 0 0 16px;
+    font-size: 17px;
+  }
+
+  .sv-values-intro-text p:last-child { margin-bottom: 0; }
+
+  .sv-values-quote {
+    background: linear-gradient(135deg, #222, #121212);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sv-values-quote:after {
+    content: "";
+    position: absolute;
+    right: -45px;
+    bottom: -45px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(243,112,33,.18);
+  }
+
+  .sv-values-quote p {
+    position: relative;
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  .sv-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .sv-value-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    border: 1px solid var(--sv-border);
+    border-radius: 24px;
+    background: #fff;
+    padding: 28px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.06);
+  }
+
+  .sv-value-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--sv-orange), rgba(243,112,33,.25));
+  }
+
+  .sv-value-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(243,112,33,.1);
+    color: var(--sv-orange);
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .sv-value-card h3 {
+    margin: 0 0 14px;
+    color: var(--sv-dark);
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .sv-value-card p {
+    margin: 0 0 16px;
+    color: #555;
+    font-size: 16px;
+  }
+
+  .sv-value-card p:last-child { margin-bottom: 0; }
+
+  .sv-value-card ul,
+  .sv-practice-card ul,
+  .sv-partner-list {
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sv-value-card li,
+  .sv-practice-card li,
+  .sv-partner-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: #4d4d4d;
+    font-size: 15px;
+  }
+
+  .sv-value-card li:before,
+  .sv-practice-card li:before,
+  .sv-partner-list li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sv-orange);
+  }
+
+  .sv-values-proof {
+    background: #f4f4f4;
+    border-radius: 28px;
+    padding: 38px;
+    border: 1px solid var(--sv-border);
+  }
+
+  .sv-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 26px;
+  }
+
+  .sv-proof-item {
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px;
+    border: 1px solid var(--sv-border);
+  }
+
+  .sv-proof-item strong {
+    display: block;
+    color: var(--sv-orange);
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .sv-proof-item span {
+    display: block;
+    color: #555;
+    font-size: 15px;
+  }
+
+  .sv-practice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .sv-practice-card {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 28px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid var(--sv-border);
+    box-shadow: 0 12px 30px rgba(0,0,0,.045);
+  }
+
+  .sv-practice-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+    background: #191919;
+    color: var(--sv-orange);
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .sv-practice-card h3 {
+    margin: 0 0 10px;
+    color: var(--sv-dark);
+    font-size: 22px;
+  }
+
+  .sv-practice-card p {
+    margin: 0;
+    color: #555;
+    font-size: 16px;
+  }
+
+  .sv-values-partners {
+    border-radius: 30px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    background: #151515;
+    color: #fff;
+  }
+
+  .sv-partners-accent {
+    min-height: 100%;
+    padding: 38px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(243,112,33,.38), transparent 28%),
+      linear-gradient(135deg, #2b2b2b, #111);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .sv-partners-accent h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.12;
+  }
+
+  .sv-partners-content {
+    padding: 38px;
+  }
+
+  .sv-partners-content p {
+    margin: 0 0 18px;
+    color: rgba(255,255,255,.82);
+    font-size: 17px;
+  }
+
+  .sv-partner-list li { color: rgba(255,255,255,.82); }
+
+  .sv-values-cta {
+    border-radius: 30px;
+    padding: 44px;
+    background: linear-gradient(135deg, #f37021, #d85d18);
+    color: #fff;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .sv-values-cta h2 {
+    color: #fff;
+    margin: 0 0 12px;
+  }
+
+  .sv-values-cta p {
+    margin: 0;
+    max-width: 720px;
+    font-size: 18px;
+    color: rgba(255,255,255,.92);
+  }
+
+  .sv-values-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .sv-values-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 20px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+    transition: .2s ease;
+    white-space: nowrap;
+  }
+
+  .sv-values-btn-primary {
+    background: #151515;
+    color: #fff !important;
+  }
+
+  .sv-values-btn-secondary {
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.45);
+    color: #fff !important;
+  }
+
+  .sv-values-btn:hover { transform: translateY(-1px); opacity: .92; }
+
+  @media (max-width: 980px) {
+    .sv-values-hero-inner,
+    .sv-values-intro,
+    .sv-values-partners,
+    .sv-values-cta { grid-template-columns: 1fr; }
+    .sv-values-grid { grid-template-columns: 1fr; }
+    .sv-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sv-values-cta { align-items: start; }
+  }
+
+  @media (max-width: 640px) {
+    .sv-values-container { padding: 0 14px; }
+    .sv-values-hero { border-radius: 0 0 20px 20px; margin-bottom: 38px; }
+    .sv-values-hero-inner { padding: 48px 0; gap: 26px; }
+    .sv-values-section { margin-bottom: 44px; }
+    .sv-values-intro-text,
+    .sv-values-quote,
+    .sv-value-card,
+    .sv-values-proof,
+    .sv-practice-card,
+    .sv-partners-accent,
+    .sv-partners-content,
+    .sv-values-cta { padding: 22px; }
+    .sv-proof-grid,
+    .sv-practice-grid { grid-template-columns: 1fr; }
+    .sv-practice-card { grid-template-columns: 1fr; }
+    .sv-practice-number { width: 62px; height: 62px; font-size: 24px; border-radius: 18px; }
+    .sv-values-buttons { width: 100%; }
+    .sv-values-btn { width: 100%; }
+  }
+</style>
+
+<div class="sv-values-page">
+  <section class="sv-values-hero">
+    <div class="sv-values-container sv-values-hero-inner">
+      <div>
+        <div class="sv-values-label">Ценности бренда</div>
+        <h1>СВАРОГ — оборудование для тех, кто работает <span>на результат</span></h1>
+        <p class="sv-values-hero-text">Мы создаём и развиваем бренд профессионального сварочного оборудования, которому доверяют специалисты, сервисные центры, дилеры и предприятия. Для нас ценности — это не формальные слова, а принципы, которые влияют на качество продукции, уровень сервиса и подход к каждому клиенту.</p>
+      </div>
+      <div class="sv-values-hero-card">
+        <strong>19</strong>
+        <p>лет опыта, развития продуктовых линеек, работы с партнёрами и поддержки специалистов в сфере сварки и резки.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="sv-values-container">
+    <section class="sv-values-section">
+      <div class="sv-values-intro">
+        <div class="sv-values-intro-text">
+          <span class="sv-values-eyebrow">О бренде</span>
+          <h2>Ценности, которые проявляются в работе каждый день</h2>
+          <p>СВАРОГ работает на рынке сварочного оборудования с 2007 года. За это время бренд прошёл путь от поставщика отдельных решений до комплексной системы оборудования, расходных материалов, сервисной поддержки и партнёрских программ.</p>
+          <p>Наша задача — предлагать понятные, надёжные и технологичные решения для ручной дуговой, полуавтоматической, аргонодуговой сварки, плазменной резки, лазерных технологий, газосварочного оборудования и сопутствующих направлений.</p>
+          <p>Мы понимаем, что сварочное оборудование выбирают не по красивым обещаниям, а по результату в работе. Поэтому в основе бренда СВАРОГ лежат три ключевые ценности: надёжность, профессионализм и смелость.</p>
+        </div>
+        <div class="sv-values-quote">
+          <p>Мы развиваем СВАРОГ как бренд, который помогает специалистам работать увереннее, дилерам — продавать эффективнее, а предприятиям — решать производственные задачи стабильнее.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-values-section">
+      <div class="sv-values-section-head">
+        <span class="sv-values-eyebrow">Три ключевые ценности</span>
+        <h2>На чём строится бренд СВАРОГ</h2>
+        <p>Каждая ценность отражает наш подход к продукту, сервису, развитию ассортимента и взаимодействию с партнёрами.</p>
+      </div>
+
+      <div class="sv-values-grid">
+        <article class="sv-value-card">
+          <div class="sv-value-icon">✓</div>
+          <h3>Надёжность</h3>
+          <p>Надёжность — главная основа профессионального оборудования. Для пользователя это уверенность в том, что аппарат стабильно выполняет свою задачу, выдерживает рабочую нагрузку и помогает получать качественный результат.</p>
+          <p>Для нас надёжность проявляется не только в технических характеристиках, но и в контроле качества, сервисной поддержке, гарантийных обязательствах и постоянной работе над улучшением продуктовых линеек.</p>
+          <ul>
+            <li>ориентация на стабильную работу оборудования;</li>
+            <li>развитие сервисной поддержки;</li>
+            <li>внимание к качеству каждой партии;</li>
+            <li>поддержка пользователей после покупки.</li>
+          </ul>
+        </article>
+
+        <article class="sv-value-card">
+          <div class="sv-value-icon">⚙</div>
+          <h3>Профессионализм</h3>
+          <p>Профессионализм для СВАРОГ — это комплексный подход к рынку сварки: от разработки и поставки оборудования до обучения, демонстраций, консультаций и работы с реальными задачами клиентов.</p>
+          <p>Мы стремимся говорить с пользователем на одном языке: учитывать условия эксплуатации, тип работ, доступное питание, интенсивность нагрузки, требования к качеству сварного соединения и экономику владения.</p>
+          <ul>
+            <li>развитие ассортимента под разные задачи;</li>
+            <li>техническая экспертиза и консультации;</li>
+            <li>обучающие материалы и демонстрации;</li>
+            <li>поддержка дилеров и сервисных центров.</li>
+          </ul>
+        </article>
+
+        <article class="sv-value-card">
+          <div class="sv-value-icon">✦</div>
+          <h3>Смелость</h3>
+          <p>Смелость — это готовность развивать рынок, внедрять новые решения и не останавливаться на привычных форматах. Мы видим, как меняются потребности клиентов, и считаем важным отвечать на эти изменения быстрее и точнее.</p>
+          <p>СВАРОГ последовательно расширяет продуктовые направления, внедряет новые инструменты коммуникации, усиливает цифровые сервисы и помогает пользователям выбирать оборудование осознанно.</p>
+          <ul>
+            <li>запуск новых продуктовых направлений;</li>
+            <li>развитие цифровых сервисов;</li>
+            <li>открытость к новым форматам работы;</li>
+            <li>готовность ставить амбициозные цели.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="sv-values-section sv-values-proof">
+      <div class="sv-values-section-head">
+        <span class="sv-values-eyebrow">Ценности в действии</span>
+        <h2>Мы подтверждаем подход конкретными решениями</h2>
+        <p>Для СВАРОГ важно, чтобы ценности были видны в продукте, сервисе, коммуникации и партнёрской работе. Именно поэтому мы развиваем не отдельные аппараты, а полноценную систему поддержки рынка.</p>
+      </div>
+      <div class="sv-proof-grid">
+        <div class="sv-proof-item">
+          <strong>2007</strong>
+          <span>год начала развития бренда СВАРОГ на рынке сварочного оборудования</span>
+        </div>
+        <div class="sv-proof-item">
+          <strong>360°</strong>
+          <span>подход к клиенту: оборудование, расходные материалы, сервис и консультации</span>
+        </div>
+        <div class="sv-proof-item">
+          <strong>B2B</strong>
+          <span>поддержка дилеров, партнёров, сервисных центров и промышленных клиентов</span>
+        </div>
+        <div class="sv-proof-item">
+          <strong>НАКС</strong>
+          <span>развитие направления аттестованного оборудования и сопровождение клиентов</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-values-section">
+      <div class="sv-values-section-head">
+        <span class="sv-values-eyebrow">Практическая польза</span>
+        <h2>Как наши ценности помогают клиентам</h2>
+        <p>Мы смотрим на оборудование не только как на товар, а как на рабочий инструмент, который должен решать задачу пользователя и быть понятным на всех этапах выбора и эксплуатации.</p>
+      </div>
+
+      <div class="sv-practice-grid">
+        <article class="sv-practice-card">
+          <div class="sv-practice-number">01</div>
+          <div>
+            <h3>Помогаем выбрать оборудование под задачу</h3>
+            <p>Покупателю важно понимать, какой аппарат подойдёт для конкретных материалов, толщин, условий питания и интенсивности работы. Мы развиваем продуктовые материалы и сервисы так, чтобы выбор был более простым и осознанным.</p>
+          </div>
+        </article>
+
+        <article class="sv-practice-card">
+          <div class="sv-practice-number">02</div>
+          <div>
+            <h3>Поддерживаем работу после покупки</h3>
+            <p>Сварочное оборудование должно сопровождаться понятной документацией, доступной информацией, гарантийной поддержкой и сервисной инфраструктурой. Это снижает риски для пользователя и повышает доверие к бренду.</p>
+          </div>
+        </article>
+
+        <article class="sv-practice-card">
+          <div class="sv-practice-number">03</div>
+          <div>
+            <h3>Развиваем ассортимент комплексно</h3>
+            <p>Мы работаем не только с аппаратами, но и с горелками, расходными частями, средствами защиты, газосварочным оборудованием, сварочной химией и аксессуарами. Это помогает закрывать больше задач в рамках одного бренда.</p>
+          </div>
+        </article>
+
+        <article class="sv-practice-card">
+          <div class="sv-practice-number">04</div>
+          <div>
+            <h3>Делаем коммуникацию понятнее</h3>
+            <p>Для нас важно, чтобы клиент видел не просто перечень характеристик, а понимал преимущества, сценарии применения и отличия оборудования. Поэтому мы усиливаем информационные материалы, инструкции, новости и цифровые инструменты.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="sv-values-section sv-values-partners">
+      <div class="sv-partners-accent">
+        <span class="sv-values-eyebrow">Партнёрство</span>
+        <h2>Сильный бренд невозможен без сильной дилерской сети</h2>
+      </div>
+      <div class="sv-partners-content">
+        <p>СВАРОГ развивается вместе с партнёрами. Мы понимаем, что дилеры и сервисные центры — это важная часть клиентского опыта: именно через них пользователь знакомится с оборудованием, получает консультацию, покупает продукцию и обращается за поддержкой.</p>
+        <p>Поэтому одна из важных задач бренда — делать партнёрскую работу более прозрачной, удобной и эффективной. Мы стремимся развивать инструменты, которые помогают дилерам работать с ассортиментом, актуальной информацией, рекламными материалами и клиентскими запросами.</p>
+        <ul class="sv-partner-list">
+          <li>поддержка дилеров актуальными материалами о продукции;</li>
+          <li>развитие программ совместного продвижения;</li>
+          <li>помощь в демонстрации и презентации оборудования;</li>
+          <li>контроль качества информации о продукции на рынке;</li>
+          <li>развитие сервисной и технической экспертизы.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sv-values-section">
+      <div class="sv-values-section-head">
+        <span class="sv-values-eyebrow">Взгляд вперёд</span>
+        <h2>Мы продолжаем развивать СВАРОГ</h2>
+        <p>Рынок сварочного оборудования меняется: пользователям нужны не только аппараты, но и удобный подбор, понятные сравнения, быстрый доступ к информации, сервисная поддержка и уверенность в выборе. Именно поэтому мы продолжаем развивать бренд в продукте, сервисе и цифровых решениях.</p>
+      </div>
+      <div class="sv-values-intro-text">
+        <p>Мы не останавливаемся на достигнутом и продолжаем работать над расширением модельного ряда оборудования, внедрением новых технологий, повышением качества и удобства работы с продукцией, а также развитием сервисов и цифровых решений для клиентов и партнёров.</p>
+        <p>Для нас важно, чтобы СВАРОГ оставался брендом, который помогает людям работать уверенно, развивать профессиональные навыки, решать производственные задачи и достигать большего в своём деле.</p>
+      </div>
+    </section>
+
+    <section class="sv-values-section sv-values-cta">
+      <div>
+        <h2>СВАРОГ — когда оборудование становится опорой в работе</h2>
+        <p>Надёжность, профессионализм и смелость помогают нам создавать решения, которые востребованы в мастерских, на производстве, в сервисных центрах, учебных заведениях и у специалистов, для которых качество результата имеет значение.</p>
+      </div>
+      <div class="sv-values-buttons">
+        <a class="sv-values-btn sv-values-btn-primary" href="/catalog">Перейти в каталог</a>
+        <a class="sv-values-btn sv-values-btn-secondary" href="/dealers/list">Где купить</a>
+      </div>
+    </section>
+  </main>
+</div>
